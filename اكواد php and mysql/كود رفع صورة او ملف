@@ -1,0 +1,55 @@
+$filename=$_FILES['upload']['name'];
+$filetembname=$_FILES['upload']['tmp_name'];
+$size=$_FILES['upload']['size'];
+$type=$_FILES['upload']['type'];
+$error=$_FILES['upload']['error'];
+$folder='upload/';
+$path='http:localhost/new/upload/'.$filename;
+ @$type=array('jpg','png','jpge','gif');
+ @$test_type=strtolower(end(explode('.',$filename)));
+   
+    if(!in_array($test_type,$type)){
+        
+                echo '<script language="javascript">';
+  echo 'alert("  الرجاء اضافة صورة" )'; 
+  echo '</script>';
+                 include('index.php') ;
+
+
+  exit;
+}
+    if($_FILES['upload']['size'] > 1000000 ){
+        echo '<script language="javascript">';
+  echo 'alert(" الم يتم التسجيل لان حجم الصورة  كبير  اضف حجم اقل من 2 ميكا بايت " )'; 
+  echo '</script>';
+      include('insert_data.php'); 
+
+  exit;
+    }else {
+        move_uploaded_file($filetembname,$folder.$filename);
+        
+    }
+    if(empty($filename)){
+              echo '<script language="javascript">';
+  echo 'alert("الرجاء اضافة صورة " )'; 
+  echo '</script>';
+             
+             
+include('index.php') ;
+
+ 
+  exit;
+    }
+ 
+   @ $sql="insert into users (name,password,image,email) values ('$name','$password','$path','$email')";
+    $query=mysqli_query($conn,$sql);
+    if($sql){
+             echo '<script language="javascript">';
+  echo 'alert("تم التسجيل بنجاح " )'; 
+  echo '</script>';  
+            include('index.php') ;
+        exit;
+}
+
+
+}

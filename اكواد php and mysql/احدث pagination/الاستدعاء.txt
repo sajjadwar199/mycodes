@@ -1,0 +1,13 @@
+$baseUrl = "http://somedomain.com/users";
+$totalResults = 150;
+$resultsPerPage = 10;
+$currentPage = !empty($_GET['page']) && ctype_digit($_GET['page']) ? $_GET['page'] : 1;
+echo pagination($baseUrl, $totalResults, $resultsPerPage, $currentPage);
+
+
+
+
+Adding Parameters to query string
+$additional_params = ['name'=>'John', 'age'=>18];
+echo pagination($baseUrl, $totalResults, $resultsPerPage, $currentPage, $additional_params);
+

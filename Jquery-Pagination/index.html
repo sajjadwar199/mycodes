@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>jQuery Pagination</title>
+<link href="css/pagination.css" rel="stylesheet">
+<style>
+*{margin:0px; padding:0px;}
+body{ background:url(../background1.png); font-family: Helvetica, sans-serif; }
+h1 {  font-family: Helvetica, Arial, sans-serif;  text-align: center;
+	  text-shadow: 2px 2px 0px rgba(255,255,255,.7), 5px 7px 0px rgba(0, 0, 0, 0.1);  font-size:50px; margin-top:60px; color:#fff;
+}
+#wrapper{ border: 5px solid rgba(255,255,255,0.6);  padding: 10px;  width:60%;  margin:60px auto; }
+.contents div{text-align:center; color:#fff; font-size:20px; margin:20px auto}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/pagination.js"></script>
+<script>
+$(document).ready(function()
+ {
+   $("#tab").pagination({
+   items: 5,
+   contents: 'contents',
+   previous: 'Previous',
+   next: 'Next',
+   position: 'bottom',
+   });
+});
+</script>
+</head>
+<body>
+<h1>jQuery Pagination</h1>
+        <div id="wrapper">
+          <div class="contents">
+            <div>This Is Number 1</div>
+            <div>This Is Number 2</div>
+            <div>This Is Number 3</div>
+            <div>This Is Number 4</div>
+            <div>This Is Number 5</div>
+            <div>This Is Number 6</div>
+            <div>This Is Number 7</div>
+            <div>This Is Number 8</div>
+            <div>This Is Number 9</div>
+            <div>This Is Number 10</div>
+            <div>This Is Number 11</div>
+            <div>This Is Number 12</div>
+            <div>This Is Number 13</div>
+            <div>This Is Number 14</div>
+            <div>This Is Number 15</div>
+            <div>This Is Number 16</div>
+            <div>This Is Number 17</div>
+            <div>This Is Number 18</div>
+            <div>This Is Number 19</div>
+            <div>This Is Number 20</div>
+            <div>This Is Number 21</div>
+            <div>This Is Number 22</div>
+            <div>This Is Number 23</div>
+            <div>This Is Number 24</div>
+            <div>This Is Number 25</div>
+            <div>This Is Number 26</div>
+            <div>This Is Number 27</div>
+            <div>This Is Number 28</div>
+            <div>This Is Number 29</div>
+            <div>This Is Number 30</div>
+          </div>
+    </div>
+  </body>
+</html>

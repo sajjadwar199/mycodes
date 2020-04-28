@@ -1,0 +1,15 @@
+
+                // PHP code to get the MAC address of Client 
+                $MAC = exec('getmac');
+
+                // Storing 'getmac' value in $MAC 
+                $macc = strtok($MAC, ' ');
+
+
+                $id = $row->id;
+                if ($_SESSION['views'] != $macc) {
+
+                    mysqli_query($c->connect(), "UPDATE ad SET views =views +1 where id=$id");
+                    $_SESSION['views'] = $macc;
+                }
+

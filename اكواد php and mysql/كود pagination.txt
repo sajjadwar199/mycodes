@@ -1,0 +1,85 @@
+  require('conn.php');
+      $charset="utf8";
+mysqli_set_charset($conn,$charset);
+mysqli_query($conn,"SET NAMES $charset;");
+mysqli_select_db($conn,'cpanal');
+    if(isset($_GET['page'])){
+        $page=$_GET['page'];
+    }else{
+        $page=1;
+    }
+    if(isset($_GET['per_page'])){
+       $per_page=$_GET['per_page'];
+    }else{
+        $per_page=3;
+    }
+    $start=$per_page * $page - $per_page;
+    $sql="SELECT * FROM `art`  order by idd asc limit {$start},{$per_page}";
+         
+    $query=mysqli_query($conn,$sql);
+    while($row=mysqli_fetch_array($query)){
+    
+@$id=$row['idd'];
+@$nameart=$row['name-art'];
+@$nametopic=$row['name-topic'];
+@$writer=$row['writer'];
+@$url=$row['url'];
+@$topic=$row['topic'];
+@$date=$row['date'];
+ @$part=$row['part']; 
+     
+        
+    ?>
+    
+    
+  <tbody>
+    <tr>
+      <th scope="row"><?php echo $id;?></th>
+      <td><?php echo $nameart;?></td>
+      <td><?php echo $nametopic;?></td>
+      <td><?php echo $nametopic;?></td>
+        <td><a href="<?php echo $url;?>"><img src="<?php echo $url;?>" height="70" width="140"/></a></td>
+        <td><?php echo  $date;?></td>
+            <td><?php echo  $part;?></td>
+           <td><button type="button" class="btn btn-success">ÊÚÏíá</button></td>
+           <td><button type="button" class="btn btn-danger">ÍĞİ</button></td>
+           <td><button type="button" class="btn btn-primary">ÚÑÖ ÇáãæÖæÚ </button></td>
+        <?php 
+       
+        
+    }
+    
+        
+        
+        ?>
+    </tr>
+ 
+
+  </tbody>
+</table>
+  <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <?php 
+    
+    $sql2="SELECT * FROM `art`";
+      $query2=mysqli_query($conn,$sql2);
+     $rows=mysqli_num_rows($query2);
+    $pages=ceil($rows/$per_page);
+    for($i=1;$i<=$pages;$i++){
+      ?>
+  
+
+
+
+     <button type="button" class="btn btn-info" style="margin-right:5px;">
+       <a href="?page=<?php echo $i;?>&per_page=<?php echo $per_page;?>" style="color:white ;"  ><?php echo $i; ?></a> 
+        </button>
+ 
+    
+    <div style="float:left;margin100px;" >
+     
+    </div>
+    <?php
+    }
+  
+      ?>

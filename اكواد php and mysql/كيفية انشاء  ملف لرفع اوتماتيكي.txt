@@ -1,0 +1,4 @@
+if(!is_dir('upload'){
+mkdir('upload');
+
+}

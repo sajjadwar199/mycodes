@@ -1,0 +1,38 @@
+<?php 
+ 
+ //insert data function //
+
+    
+// $table="اسم الجدول المراد ادخال القيم له" 
+//$data1="القيمة المراد ادخالها مع العمود الاول في الجدول وتستطيع اضافة متغيرات اخرى اذا اردت الاضافة  "
+
+function insert ($table,$data1){
+require('conn.php');   
+@$data1=$_POST[$ntop];
+$sql=" ";
+ if (isset($_POST['send'])){
+ $sql="INSERT INTO `$table` (`data1`) VALUES ('$data1')";
+ mysqli_query($conn,$sql); 
+ header("location:insert.php");
+ }
+        
+ }
+   
+       
+       
+   
+   
+       
+                   
+             
+        }
+        
+
+   
+       
+   
+
+
+
+
+?>

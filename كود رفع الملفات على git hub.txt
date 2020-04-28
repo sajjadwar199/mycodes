@@ -1,0 +1,22 @@
+1-cd /«„ œ«œ «·„·› «·–Ì  —Ìœ «·œŒÊ· «·ÌÂ
+2-git init ·⁄„· «·›«Ì· ⁄·Ï «·ÃÂ«“ 
+3-git add .
+4-git commit -m "your commnt" «· ⁄·Ìﬁ «·Œ«’ »ﬂ 
+5-git add remote add  origin  «·—«»ÿ «·Œ«’ » repostry
+6-git push origin master  
+*************************************
+git init
+git add .
+git commit -m "message"
+git remote add origin "github.com/your_repo.git"
+git push -u origin master
+*************************************
+«–« ŸÂ—  Â–Â «·„‘ﬂ·… ‰ﬂ » 
+! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/sajjadwar199/mycodes.git
+************************
+git pull --rebase origin master
+git push origin master
+**************************
+—«»ÿ Õ· «·„‘ﬂ·…
+https://stackoverflow.com/questions/24114676/git-error-failed-to-push-some-refs-to-remote

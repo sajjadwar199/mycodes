@@ -1,0 +1,15 @@
+$(document).ready(adjustRequirment);
+  $(window).resize(adjustRequirment);
+
+  function adjustRequirment(){
+      var maxHeight = -1;
+
+      $('#navbar').each(function() {
+          $(this).css('height', 'auto');
+          maxHeight = maxHeight > $(this).height();
+      });
+
+      $('#navbar').each(function() {
+          $(this).height(maxHeight);
+      });
+  }

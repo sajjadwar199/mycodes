@@ -1,0 +1,4 @@
+<?php
+$rand = substr(md5(uniqid(rand(), true)),3,10);
+echo $rand;
+?>

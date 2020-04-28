@@ -1,0 +1,6 @@
+$size_last=400;
+if(strlen($topic) > $size_last) {
+ $last_arts= substr($topic,0,$size_last);
+}else{
+    $last_arts=$topic;
+}

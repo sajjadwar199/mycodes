@@ -1,0 +1,33 @@
+<?php
+              // Should always be on top
+              if (!isset($_SESSION['counter'])) { // It's the first visit in this session
+                $handle = fopen("counter.txt", "r");
+                if (!$handle) {
+                  echo "Could not open the file";
+                } else {
+                  $counter = (int) fread($handle, 20);
+                  fclose($handle);
+                  $counter++;
+                  $handle = fopen("counter.txt", "w");
+                  fwrite($handle, $counter);
+                  fclose($handle);
+                  $_SESSION['counter'] = $counter;
+                }
+              } else { // It's not the first time, do not update the counter but show the total hits stored in session
+                $handle = fopen("counter.txt", "r");
+                $count = (int) fread($handle, 20);
+                fclose($handle);
+                $counter = $_SESSION['counter'];
+              }
+              ?>
+
+
+
+
+ <h6 align="right" style="color:white;"> ЧЬуЧсэ вэЧбЧЪ Чсуцок : <?php if (!isset($count)) {
+                                                                                echo $counter;
+                                                                              } else {
+                                                                                echo $count;
+                                                                              } ?> убЩ </h6>
+
+

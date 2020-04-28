@@ -1,0 +1,29 @@
+//scroll to top 
+$(document).ready(function(){
+ var s=$('.scroll-to-top');
+if( $(window).scrollTop() >=0 ){
+  
+if($('.scroll-to-top').is(':hidden')) {
+  s.fadeIn(1000);
+
+} else {
+    
+   s.fadeOut(1000);
+   
+}  
+} 
+    
+    
+//on click go to top 
+$('.go-to-top').click(function(event){
+    event.preventDefault();
+  $('html,body').animate({
+      
+     scrollTop:0 
+      
+  },2000); 
+    
+}) ;  
+
+});
+

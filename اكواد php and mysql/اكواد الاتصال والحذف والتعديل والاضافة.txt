@@ -1,0 +1,45 @@
+
+<?php
+$host="localhost";
+$user="root";
+$pass="";
+$db="project";
+$conn=mysql_connect($host,$user,$pass,$db);
+$charset="utf8";
+mysql_set_charset($charset,$conn);
+mysql_query("SET NAMES $charset;",$conn);
+mysql_select_db('project',$conn);
+$user=" ";
+$name=" ";
+$stage=" ";
+$collage=" ";
+ if (isset($_POST['username'])){
+$user=$_POST['username']; 
+ }
+if (isset($_POST['name'])){
+$name=$_POST['name']; 
+ }
+ if(isset($_POST['stage'])){
+$stage=$_POST['stage']; 
+ }
+ if(isset($_POST['collage'])){
+$collage=$_POST['collage'] ;
+ }
+ $sqls=" ";
+if(isset($_POST['add'])){	 
+$sqls="insert into users (id,name,stage,collage) values('$user','$name','$stage','$collage')";	
+header("location:index.php"); 
+mysql_query($sqls); 	 
+ }
+  if(isset($_POST['edit'])){	 
+$sqls="update users set name='$name',stage='$stage' where collage='$collage' AND id='$username'"; 
+header("location:index.php"); 
+mysql_query($sqls); 
+ }
+   if(isset($_POST['delet'])){	 
+$sqls="delete from  users where collage='$collage' "; 
+header("location:index.php"); 
+mysql_query($sqls); 	 
+ }
+ $r=mysql_query("select *from users");
+?>

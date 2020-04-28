@@ -1,0 +1,143 @@
+<?php 
+if(isset($_GET['id'])){
+    $id=$_GET['id']; 
+}
+require('conn.php');
+ if(isset($_POST['update'])) {
+if(isset($_POST['name-e'])){
+$name=$_POST['name-e'];
+}
+if(isset($_POST['username'])){
+$username=$_POST['username'];
+}
+if(isset($_POST['pass'])){
+$pass=$_POST['pass'];
+}
+if(isset($_POST['powers'])){
+  $powers=$_POST['powers'];   
+}
+ $update="UPDATE `employ` SET `name-e`=' $name',`username`='$username',`pass`='$pass',`powers`='$powers'  where id='$id'";
+     mysqli_query($conn,$update) or die(mysqli_error()) ;
+ 
+    if( $name==""){
+ ?>
+<div class="alert alert-info" role="alert">
+لا تترك الاسم فارغا 
+</div> 
+<?php 
+    }
+if( $username==""){
+ ?>
+<div class="alert alert-info" role="alert">
+لا تترك اسم المستخدم فارغا  
+</div>
+<?php 
+    }
+                if( $pass==""){
+ ?>
+<div class="alert alert-info" role="alert">
+لا تترك كلمة السر فارغة 
+</div>
+<?php 
+    }
+                      if( $powers==""){
+ ?>
+<div class="alert alert-info" role="alert">
+    لا تترك حقل الصلاحية فارغا 
+</div>
+<?php 
+    }
+
+     
+   
+     
+     }
+ 
+    
+    
+   
+  
+
+
+?>
+
+
+
+
+<br>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link type="text/css"  rel="stylesheet" href="bootstrap/bootstrap-rtl.css"/>
+<link rel="stylesheet" type="text/css" href="style.css" />
+
+
+<?php
+require('conn.php');
+
+@$sql="select * from employ where id='$id'";
+$query=mysqli_query($conn,$sql);
+while($row=mysqli_fetch_array($query)){
+ @$name=$row['name-e'];
+        @$username=$row['username'];
+        @$pass=$row['pass'];
+        @$id=$row['id'];
+        @$powers=$row['powers'];
+            
+
+?>
+<div class="container">
+   
+    <div class="alert alert-danger" role="alert">
+        <h3 align="center">صفحة  تعديل الموضفين</h3>
+</div>
+                     <div class="input-group input-group-sm mb-12">
+   <form action="<?php $php_self ;?>" method="post"  style="width:100%;" >
+<div class="input-group input-group-lg">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-lg">اسم الموضف</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Sizing example input"  value=" <?php echo $name; ?>"                  aria-describedby="inputGroup-sizing-lg" name="name-e">
+    
+</div>
+                           
+<div class="input-group input-group-lg">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-lg"> اسم المستخدم</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value="<?php echo $username; ?>" name="username">
+    
+</div>
+                  
+<div class="input-group input-group-lg">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-lg">كلمة السر  </span>
+  </div>
+  <input type="text" class="form-control" aria-label="Sizing example input"  value=" <?php echo $pass; ?>"aria-describedby="inputGroup-sizing-lg" name="pass">
+    
+</div>
+       
+<div class="input-group input-group-lg">
+    <span class="input-group-text"  id="inputGroup-sizing-lg"> الصلاحية  </span><select  class="form-control"  id="exampleFormControlSelect1"  name="powers" >
+    
+     <option  ><?php echo $powers;?></option>
+         <option></option>
+      <option>اضافة</option>
+      <option>حذف</option>
+      <option>تعديل</option>
+      <option>اضافة ,حذف ,تعديل</option>
+    </select>
+                                     
+
+</div>                    
+	<button type="submit" class="btn btn-danger" style="margin-right:50%;margin-top:10px;"  name="update">تعديل</button>
+                              <?php 
+    
+}
+    ?>
+                         </form>
+  
+</div>
+       <button type="button" class="btn btn-info" >
+                       <a href="employ.php" style="text-decoration:none; color:white;">  رجوع لصفحة الموضفين</a></button>

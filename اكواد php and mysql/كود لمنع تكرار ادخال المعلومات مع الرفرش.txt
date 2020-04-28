@@ -1,0 +1,5 @@
+ if($fire){
+	 header("index.php");
+exit;
+	 
+ }

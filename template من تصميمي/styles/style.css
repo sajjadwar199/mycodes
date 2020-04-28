@@ -1,0 +1,181 @@
+*{
+padding:0px;
+margin:0px;
+ font-size:19px;
+    font-family: calibri;
+}
+html{
+    top:2px;
+    min-width:1080px;
+}
+
+.navbar{
+ background-color:#1f1f47; 
+
+    width:auto;
+    height:70px;
+padding:20px;
+
+}
+.navbar li a{
+    text-decoration: none;
+    color:aliceblue;
+
+}
+.navbar li{
+    list-style-type:none;
+    display:inline-block;
+    float: right;
+    margin: 10px;
+
+}
+.logo{
+margin-top:1px;
+ 
+width:auto;
+    
+
+
+font-weight:bold;
+}
+.social_parts{
+    margin-top:1px;
+    width:auto;
+  height: 50px;
+    background-color:#3d4f60;
+    padding:14 0 0 0px ;
+}
+.social_parts .social_acount li a{
+    text-decoration: none;
+    color:white;
+    margin:15px;
+ 
+}
+.social_parts .social_acount li{
+    list-style-type: none;
+    display: inline-block;
+       float: right;
+}
+i{
+    color:white;
+    font-weight: bold;
+    font-size:20px;
+}
+.about-lang{
+margin-top:30px;
+width:100%;
+height:950px;
+ background-color:#1f1f47;
+
+}
+.active{
+    padding:10px;
+    border:2px solid #b9b8da;
+ border-radius:4px;
+}
+.active:hover{
+    background-color:dodgerblue;
+  transition: background-color 2s;
+
+}
+.lang{
+  
+    width: 33.333%;
+    height: 60px;
+text-align: center;
+    float: right;
+box-sizing: border-box;
+    height: 400px;
+    color: white;
+
+}
+p{
+ font-size: 16px;
+}
+img{
+    border-radius: 10px;
+    z-index: -3;
+    opacity: 1;
+    
+}
+.gallary{
+
+width:auto;
+height:800px;
+    background-color:#1f1f47;
+
+
+}
+.imgs{
+    text-align: center;
+
+     width: 33.333%;
+  height: 40px;
+
+    float: left;
+box-sizing: border-box;
+    height: 400px;
+    color: white;
+
+}
+.about-us {
+
+width: auto;
+    height: 300px;
+    background-color:#1f1f47;
+
+}
+.footer{
+ width: auto;
+    height: 600px;
+    background-color:rgb(30, 29, 63);   
+    
+}
+.div-footer{
+    margin-top:9px;
+   width: 33.333%;
+    height: 60px;
+text-align: center;
+    float: right;
+box-sizing: border-box;
+    height: 300px;
+    color: white; 
+    padding:10px;
+    
+}
+.contact{
+display: inline-block;   
+margin-top:5px;
+    outline: none;
+    border:1px solid white;
+  
+}
+.active2{
+
+  padding:10px;
+    border:2px solid #b9b8da;
+ border-radius:4px;
+    background-color: green;
+  transition: background-color 1s;
+ }
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color:dodgerblue;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color:firebrick;
+}
+

@@ -1,0 +1,52 @@
+
+<?php 
+ //insert data function //
+
+function insert ($table,$ntop,$wtop,$top,$atop){
+
+require('conn.php');
+   
+ @$ntop= $_POST[$ntop];
+@$wtop=  $_POST[$wtop];
+@$atop= $_POST[$atop];
+@$top= $_POST[$top];
+ $sql=" ";
+if (isset($_POST['send'])){ 
+$sql="INSERT INTO `$table` (`n-top`,`w-top`,`a-top`,`top`) VALUES ('$ntop','$wtop','$atop','$top')";
+mysqli_query($conn,$sql);
+header('location:insert.php'); 
+
+}
+}
+
+
+
+//delete data function //
+ function delete($table,$no){
+     require('conn.php');
+  @ $no=$_GET[$no];
+     $s="DELETE FROM `topic` WHERE no = $no ";
+     mysqli_query($conn,$s);
+     header('location:index.php');
+   
+             
+ }
+ 
+
+//update data function //
+function  update ($table,$ntop,$wtop,$top,$atop){
+include('conn.php');
+
+@$ntop=$_POST[$ntop];
+@$wtop=$_POST[$wtop];
+@$atop=$_POST[$atop];
+@$top=$_POST[$top];  
+ if(isset($_POST['update'])){ 
+      @$no=$_GET['no'];
+$a="UPDATE  $table SET n-top='$ntop' , w-top='$wtop',top='$top',$atop' where no='$no'";
+ $query=mysqli_query($conn,$a);
+header('index.php');
+}   
+}
+?>
+

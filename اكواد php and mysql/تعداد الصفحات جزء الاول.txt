@@ -1,0 +1,12 @@
+
+<?php
+//  ãáÇÍÖÉ íßÊÈ ŞÈá ÌãáÉ ÇáÇÓÊÚáÇã
+if(isset($_GET['page'])){
+    $page=$_GET['page'];
+}else{
+    $page=1;
+}
+$number_page=1;//ÚÏÏ ÇáÚäÇÕÑ ÇáÊí íÑÇÏ ÚÑÖåÇ İí ÇáÔÇÔÉ 
+   @$from=($page-1)*$number_page;
+?>
+//$sql="select * from ÇÓã ÇáÌÏæá  where ÇáÔÑØ Çæ ÈÏæä ÔÑØ  limit $from,$number_page ";

@@ -1,0 +1,71 @@
+// including database connection
+require 'db_connection.php';
+
+if(isset($_GET['page'])){
+    // if get page number through url and check it is a valid number
+    $page_num = filter_var($_GET['page'], FILTER_VALIDATE_INT,[
+        'options' => [
+            'default' => 1,
+            'min_range' => 1
+        ]
+    ]); 
+    
+}else{
+    //default page number
+    $page_num = 1;
+}
+// set how much show posts in a single page
+$page_limit = 2;
+// Set Offset
+$page_offset = $page_limit * ($page_num - 1);
+
+function showPosts($conn, $current_page_num, $page_limit, $page_offset){
+    
+    // query of fetching posts
+    $query = mysqli_query($conn,"SELECT * FROM `posts` ORDER BY id LIMIT $page_limit OFFSET $page_offset");
+    
+    // check database is not empty
+    if(mysqli_num_rows($query) > 0){
+        
+        // fetching data
+        while($row = mysqli_fetch_array($query)){ 
+            echo '<li><h2>'.$row['title'].'</h2><p>'.$row['body'].'</p></li>';
+        }
+        
+        // total number of posts
+        $total_posts = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `posts`"));
+        
+        // total number of pages
+        $total_page = ceil($total_posts / $page_limit);
+        // set next page number
+        $next_page = $current_page_num+1; 
+        // set prev page number
+        $prev_page = $current_page_num-1; 
+        
+       echo "<li>";
+        //showing prev button and check current page number is greater than 1
+        if($current_page_num > 1){
+           echo '<a href="?page='.$prev_page.'" class="page_link">Prev</a>';
+        }
+        // show all number of pages
+        for($i = 1; $i <= $total_page; $i++){
+            //highlight the current page number
+            if($i == $current_page_num){
+                echo '<a href="?page='.$i.'" class="page_link active_page">'.$i.'</a>';
+            }else{
+                echo '<a href="?page='.$i.'" class="page_link">'.$i.'</a>';
+            }
+            
+        }
+        // showing next button and check this is last page
+        if($total_page+1 != $next_page){
+           echo '<a href="?page='.$next_page.'" class="page_link">Next</a>';
+        }
+        
+        echo "</li>";  
+        
+    }else{
+        echo "No Data found !";
+    }
+}
+?>

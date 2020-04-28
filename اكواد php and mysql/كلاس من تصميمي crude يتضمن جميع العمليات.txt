@@ -1,0 +1,112 @@
+<?php 
+
+class crude{
+  private 
+      
+$sql,
+$sql2;
+
+  public 
+      
+      $image;
+    //query œ«·… ··«” ⁄·«„ Ê«—Ã«⁄ ﬁÌ„… 
+    public
+    function query($sql){
+      include 'conn.php';  
+    $query=mysqli_query($conn,$sql);
+    if(!$query){
+        
+        echo " Â‰«ﬂ Œÿ« ›Ì «·«” ⁄·«„";
+    }else{
+        echo "";
+    }
+    return $query; 
+    }
+     //œ«·… ·«—Ã«⁄ «·«” ⁄·«„ ⁄·Ï ÂÌ∆… „’›Ê›…
+        function fetch($q){
+      include 'conn.php';  
+    $row=mysqli_fetch_array($q);
+    return $row;    
+    }
+    
+   function insert($page,$sql2){
+      include 'conn.php';  
+    $query=mysqli_query($conn,$sql2);
+    if(!$query){
+        
+        echo " Â‰«ﬂ Œÿ« ›Ì «·«” ⁄·«„";
+    }else{
+         echo"<script>alert(' „  «·⁄„·Ì… »‰Ã«Õ')</script>";
+                echo"<script>window.open('$page','_self')</script>"; 
+    }
+   
+    } 
+    
+    function number_query($q){
+       $num=mysqli_num_rows($q);
+        return $num;
+    }
+   
+    
+    
+    
+    
+    
+    
+    //
+    //œ«·… —›⁄ «·’Ê— „⁄  ‘›Ì— «·’Ê—… 
+
+function upload_image($image,$file_upload_to,$page_open,$name){
+   $rand = substr(md5(uniqid(rand(), true)),3,10);
+if(isset($image)){
+$image=$image;
+}
+$file_name=$_FILES["$image"]["name"];
+$file_tmp_name=$_FILES["$image"]["tmp_name"];
+$file_size=$_FILES["$image"]["size"];
+$file_type=$_FILES["$image"]["type"];
+$file_error=$_FILES["$image"]["error"];
+$folder="$file_upload_to /";
+$path=$folder.$rand.$file_name;
+
+
+
+    
+    $tmp = explode('.', $file_name);
+$test_type= end($tmp);
+$type=array('jpg','png','jpge','gif','jfif');
+
+if(in_array($test_type,$type) and $file_size < 1000000 ){
+    move_uploaded_file($file_tmp_name,$path);
+ 
+}else{
+   echo"<script>alert('.$name.«·—Ã«¡ «÷«›… ’Ê—… »’Ì€… „œ⁄Ê„… «ﬁ· „‰ 1 „Ì€« »«Ì !·„   „ «÷«›… ')</script>";
+                echo"<script>window.open('$page_open','_self')</script>";  
+}
+
+  return $path;  
+}
+ 
+    
+ //  œ«·…  Ê·Ìœ „·›«  «·—›⁄ «Ê „« ÌﬂÌ«
+    function create_upload_file($folder_name){
+      if(!is_dir($folder_name)) {
+       mkdir($folder_name);   
+      } 
+    }
+    
+    
+    
+};
+
+
+
+
+
+
+
+?>
+
+
+
+

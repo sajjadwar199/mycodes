@@ -1,0 +1,56 @@
+<?php
+
+
+
+
+//ßáÇÓ ÇáÇÈ áÌãÚ ÚÏÏíä
+class find
+{
+  private $var1, $var2;
+
+  public $sum;
+
+  public function func1()
+  {
+    $var1 = 30;
+    $var2 = 20;
+    $sum = $var1 + $var2;
+    return $sum;
+  }
+};
+
+
+
+
+
+//ßáÇÓ ÇáÇÈä áÊÞÓíã ÇáÚÏÏíä ãä ßáÇÓ ÇáÇÈ
+class find2 extends find
+
+{
+
+  function avg()
+  {
+    $avg = new find2;
+    return  $avg->func1() / 2;
+  }
+};
+// ßáÇÓ ÇáÍÝíÏ áÇÑÌÇÚ ÇáÞíãÉ ÇáÍÞíÞíÉ ááãÌãæÚ ÇáÚÏÏíä ãä ßáÇÓ ÇáÇÈä
+class find3 extends find2
+
+{
+  function avg2()
+  {
+    $avg2 = new find2;
+    return  $avg2->avg() + 25;
+  }
+};
+
+$avarage = new find2;
+echo $avarage->avg() . '<br></br>';
+
+$avarage2 = new find3;
+echo $avarage2->avg2();
+
+
+
+?>

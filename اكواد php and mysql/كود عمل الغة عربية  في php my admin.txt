@@ -1,0 +1,4 @@
+    $charset="utf8";
+mysqli_set_charset($conn,$charset);
+mysqli_query($conn,"SET NAMES $charset;");
+mysqli_select_db($conn,'cpanal');
